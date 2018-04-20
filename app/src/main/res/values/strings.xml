@@ -1,0 +1,202 @@
+<resources>
+    <string name="app_name">サポーターズ</string>
+
+    <!--
+        サポーターズ、サポーター、サポッチャ
+    -->
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_home">ホーム</string>
+    <string name="title_list">リスト</string>
+    <string name="title_mylist">マイリスト</string>
+    <string name="title_new_support">サポート依頼</string>
+    <string name="title_finish_support">サポート完了</string>
+    <string name="title_edit_support">サポート編集</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="login_explain">Aqua会員情報に登録しているメールアドレスでログインしてください</string>
+    <string name="prompt_email">メール</string>
+    <string name="prompt_password">パスワード (optional)</string>
+    <string name="action_sign_in">ログイン</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">メールアドレスが無効です</string>
+    <string name="error_invalid_password">パスワードが一致しません</string>
+    <string name="error_incorrect_password">パスワードが一致しません</string>
+    <string name="error_field_required">必須項目です</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">閉じる</string>
+    <string name="do_support_short">サポート\nする</string>
+
+    <!-- Strings related to home -->
+    <string name="home">ホーム</string>
+    <string name="do_support">サポートをする</string>
+    <string name="request_support">サポートを受ける</string>
+
+    <string name="title_point">サポートポイント</string>
+    <string name="title_lank">サポートランキング</string>
+
+    <!-- Strings related to list -->
+    <string name="menu_all">全て</string>
+    <string name="menu_support">サポートを担当</string>
+    <string name="menu_request">サポートを依頼</string>
+
+    <!-- Strings related to support_detail -->
+    <string name="title_content">内容</string>
+    <string name="title_request_to">依頼相手</string>
+    <string name="title_destination_to">届け先</string>
+    <string name="title_destination_from">預り先</string>
+    <string name="title_requestant">依頼者</string>
+    <string name="title_message">メッセージ</string>
+    <string name="title_period">依頼期間</string>
+    <string name="title_status">ステータス</string>
+
+    <string name="title_looking">募集中</string>
+    <string name="title_supporting">進行中</string>
+    <string name="title_complete">完了</string>
+
+    <string name="text_all">全て</string>
+    <string name="text_looking">募集中</string>
+    <string name="text_supporting">進行中</string>
+    <string name="text_complete">完了</string>
+
+    <string name="task_group_washing">洗濯</string>
+    <string name="task_group_clean">掃除</string>
+
+    <string name="text_point">%1$dポイント</string>
+    <string name="text_man">男性</string>
+    <string name="text_woman">女性</string>
+
+    <string name="text_young">ヤング\n～34歳</string>
+    <string name="text_middle">ミドル\n35～54歳</string>
+    <string name="text_senior">シニア\n55歳～</string>
+
+    <string name="text_limit">期限</string>
+    <string name="text_request">依頼</string>
+    <string name="text_finish">完了</string>
+    <string name="text_picture">写真</string>
+    <string name="text_machine">機器</string>
+    <string name="text_message">メッセージ</string>
+    <string name="text_evaluation">評価</string>
+    <string name="text_choose">選択</string>
+    <string name="text_chose_machine">機器を選択</string>
+
+    <string name="message_requested">サポートを依頼しました</string>
+    <string name="message_finished">サポートを完了しました</string>
+    <string name="message_undertaked">サポートを引き受けました</string>
+
+    <string-array name="status_map">
+        <item>1:募集中</item>
+        <item>2:実行中</item>
+        <item>3:完了済</item>
+    </string-array>
+
+    <string-array name="task_group_map">
+        <item>100:洗濯サポート</item>
+        <item>200:掃除サポート</item>
+    </string-array>
+
+    <string-array name="c2c_support_task_map">
+        <!-- TaskGroupId,TaskId,TaskName,TaskIconGroup -->
+        <item>100:1000:洗濯物をコインランドリーへ運ぶ:150:30</item>
+        <item>100:1010:洗濯機で洗濯する:100:10</item>
+        <item>100:1020:乾燥機で乾燥する:100:10</item>
+        <item>100:1030:洗濯・乾燥機で洗濯・乾燥する:100:10</item>
+        <item>100:1040:洗濯が終わったものを詰める:100:20</item>
+        <item>100:1050:乾燥が終わったものを詰める:100:20</item>
+        <item>100:1060:洗濯が終わったものを届ける:150:30</item>
+    </string-array>
+
+    <string-array name="b2c_support_task_map">
+        <!-- TaskGroupId,TaskId,TaskName,TaskIconGroup -->
+        <item>200:2000:店舗の洗濯（床）:-1:40</item>
+        <item>200:2010:店舗の洗濯（椅子）:-1:40</item>
+        <item>200:2020:店舗の洗濯（ランドリーカート）:-1:40</item>
+        <item>200:2030:店舗の洗濯（忘れ物入れ）:-1:40</item>
+        <item>200:2040:店舗の洗濯（窓ガラス・自動ドア）:-1:40</item>
+        <item>200:2050:店舗の洗濯（棚）:-1:40</item>
+    </string-array>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value"/>
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+
+</resources>

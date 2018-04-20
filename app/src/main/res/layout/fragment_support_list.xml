@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="org.amd.aqua.fragment.SupportListFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <RadioButton
+                android:id="@+id/allStatusRadio"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/segmented_left"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="@string/text_all"
+                android:textColor="@drawable/segmented_text_color"/>
+
+            <RadioButton
+                android:id="@+id/statusLookingRadio"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/segmented_center"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="@string/text_looking"
+                android:textColor="@drawable/segmented_text_color"/>
+
+            <RadioButton
+                android:id="@+id/statusSupportingRadio"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/segmented_center"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="@string/text_supporting"
+                android:textColor="@drawable/segmented_text_color"/>
+
+            <RadioButton
+                android:id="@+id/statusCompleteRadio"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/segmented_right"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="@string/text_complete"
+                android:textColor="@drawable/segmented_text_color"/>
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:layoutManager="LinearLayoutManager"
+        tools:listitem="@layout/fragment_support_list_item"/>
+</LinearLayout>

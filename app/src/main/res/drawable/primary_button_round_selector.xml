@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--  フォーカスがないときの形 -->
+    <item android:drawable="@drawable/primary_button_round"
+        android:state_pressed="false"/>
+
+    <!--  押されたときの形 -->
+    <item android:drawable="@drawable/primary_button_round_pressed"
+          android:state_pressed="true"/>
+</selector>
