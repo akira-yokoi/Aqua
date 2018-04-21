@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,6 +47,16 @@ public class SupportItemCompleteAcitivity extends AppCompatActivity implements F
 
             TextView taskText = (TextView) findViewById(R.id.taskText);
             taskText.setText(task.taskName);
+        }
+
+        {
+            ImageButton image1Button = (ImageButton) findViewById(R.id.image1Button);
+            image1Button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // TODO: カメラ or ギャラリーの起動
+                }
+            });
         }
 
         {

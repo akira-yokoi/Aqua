@@ -2,9 +2,11 @@ package org.amd.aqua;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -20,18 +22,17 @@ import org.amd.aqua.fragment.SupportListFragment;
 import org.amd.aqua.model.SupportItem;
 import org.amd.aqua.util.ViewUtil;
 
-import static org.amd.aqua.R.id.navigation;
 import static org.amd.aqua.model.SupportContentManager.MODE_ALL;
 import static org.amd.aqua.model.SupportContentManager.MODE_REQUEST;
 import static org.amd.aqua.model.SupportContentManager.MODE_SUPPORT;
 import static org.amd.aqua.model.SupportContentManager.STATUS_ALL;
-import static org.amd.aqua.model.SupportContentManager.STATUS_SUPPORTING;
 import static org.amd.aqua.model.SupportContentManager.STATUS_LOOKING;
-import static org.amd.aqua.model.SupportContentManager.STATUS_COMPLETE;
 
 public class MenuActivity extends AppCompatActivity implements FragmentActionListener, SupportListDetailFragment.Listener {
 
     private BottomNavigationView bottomNavigationView = null;
+
+    private FloatingActionButton newSupportRequestButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class MenuActivity extends AppCompatActivity implements FragmentActionLis
         goHome();
 
         // Floatingボタン
-        FloatingActionButton newSupportRequestButton = (FloatingActionButton) findViewById(R.id.newSupportRequest);
+        newSupportRequestButton = (FloatingActionButton) findViewById(R.id.newSupportRequest);
         newSupportRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,7 +56,7 @@ public class MenuActivity extends AppCompatActivity implements FragmentActionLis
         });
 
         // ButtomNavigation
-        bottomNavigationView = (BottomNavigationView) findViewById(navigation);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
@@ -105,24 +106,21 @@ public class MenuActivity extends AppCompatActivity implements FragmentActionLis
     @Override
     public void onAction(Fragment fragment, int actionId) {
         if (fragment instanceof HomeFragment) {
-            if (actionId == R.id.supporterlookingButton) {
-                goList(MODE_SUPPORT, STATUS_LOOKING);
-            }
-            if (actionId == R.id.supporterSupportingButton) {
-                goList(MODE_SUPPORT, STATUS_SUPPORTING);
-            }
-            if (actionId == R.id.supporterCompletedButton) {
-                goList(MODE_SUPPORT, STATUS_COMPLETE);
-            }
-
-            if (actionId == R.id.requestantLookingButton) {
-                goList(MODE_REQUEST, STATUS_LOOKING);
-            }
-            if (actionId == R.id.requestantSupportingButton) {
-                goList(MODE_REQUEST, STATUS_SUPPORTING);
-            }
-            if (actionId == R.id.requestantCompletedButton) {
-                goList(MODE_REQUEST, STATUS_COMPLETE);
+            if (actionId == 0) {
+                // Handlerクラスをインスタンス化し、postDelayedメソッドを呼んでいる
+                new Handler().postDelayed(new Runnable() {
+                    // Runnable型のインスタンス化と定義
+                    @Override
+                    public void run() {
+                        Snackbar.make(bottomNavigationView, R.string.message_you_got_request, Snackbar.LENGTH_LONG)
+                                .setAction(R.string.text_show_request, new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        goList(MODE_SUPPORT, STATUS_LOOKING);
+                                    }
+                                }).show();
+                    }
+                }, 2000);
             }
         }
     }
@@ -161,6 +159,8 @@ public class MenuActivity extends AppCompatActivity implements FragmentActionLis
 
     @Override
     public void doSupport() {
-
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        SupportListFragment fragment = (SupportListFragment) fragmentManager.getFragments().get(0);
+        fragment.filter();
     }
 }

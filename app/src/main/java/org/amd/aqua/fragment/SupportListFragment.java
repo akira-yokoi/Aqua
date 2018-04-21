@@ -92,11 +92,11 @@ public class SupportListFragment extends Fragment implements CompoundButton.OnCh
             menu.findItem(R.id.filter_all).setChecked(true);
         }
         if (mode == MODE_REQUEST) {
-            getActivity().setTitle("リスト（依頼分）");
+            getActivity().setTitle("リスト（ちょいリク分）");
             menu.findItem(R.id.filter_request).setChecked(true);
         }
         if (mode == MODE_SUPPORT) {
-            getActivity().setTitle("リスト（担当分）");
+            getActivity().setTitle("リスト（ちょいウケ分）");
             menu.findItem(R.id.filter_support).setChecked(true);
         }
     }
@@ -119,10 +119,9 @@ public class SupportListFragment extends Fragment implements CompoundButton.OnCh
     }
 
     public void filter() {
-        SupportContentManager scm = SupportContentManager.getInstance( getContext());
-        List<SupportItem> items = scm.getItems( mode, status, null, null);
-        mAdapter.setItems( items);
-
+        SupportContentManager scm = SupportContentManager.getInstance(getContext());
+        List<SupportItem> items = scm.getItems(mode, status, null, null);
+        mAdapter.setItems(items);
         mAdapter.notifyDataSetChanged();
     }
 
@@ -162,8 +161,8 @@ public class SupportListFragment extends Fragment implements CompoundButton.OnCh
         inflater.inflate(R.menu.main_menu, menu);
         this.menu = menu;
 
-        setMode( mode);
-        setStatus( status);
+        setMode(mode);
+        setStatus(status);
         filter();
     }
 

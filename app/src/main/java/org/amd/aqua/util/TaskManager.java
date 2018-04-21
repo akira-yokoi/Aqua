@@ -104,7 +104,6 @@ public class TaskManager {
         task.taskName = taskName;
         task.point = point;
         task.iconResourceId = iconGroupResourceMap.get(iconGroupCode);
-
         taskMap.put(task.taskCode, task);
 
         List<Task> taskList = taskGroupMap.get(task.taskGroupCode);

@@ -16,8 +16,10 @@ import android.widget.TextView;
 
 import org.amd.aqua.R;
 import org.amd.aqua.SupportItemCompleteAcitivity;
+import org.amd.aqua.model.SupportContentManager;
 import org.amd.aqua.model.SupportItem;
 import org.amd.aqua.model.Task;
+import org.amd.aqua.model.UserManager;
 import org.amd.aqua.util.DateTimeUtil;
 import org.amd.aqua.util.ResourceUtil;
 import org.amd.aqua.util.StringUtil;
@@ -78,12 +80,15 @@ public class SupportListDetailFragment extends BottomSheetDialogFragment {
         }
 
         TextView requestantText = view.findViewById(R.id.requestantText);
-        requestantText.setText(String.valueOf(item.requestantId));
+        requestantText.setText( UserManager.getInstance().getUserName(item.requestantId));
 
         TextView periodText = view.findViewById(R.id.periodText);
         periodText.setText(DateTimeUtil.getMDHm(item.startDate) + "～" + DateTimeUtil.getMDHm(item.limitDate));
 
-        TextView statusText = view.findViewById(R.id.statusText);
+        TextView pointText = view.findViewById(R.id.pointText);
+        pointText.setText( context.getString( R.string.text_point, task.point));
+
+        TextView statusText = view.findViewById( R.id.statusText);
         statusText.setText(constants.getStatusName(item.status));
         ViewUtil.setStatusColor(statusText, item.status);
 
@@ -104,6 +109,7 @@ public class SupportListDetailFragment extends BottomSheetDialogFragment {
                     getActivity().startActivity( intent);
                 } else {
                     ViewUtil.showShortToast(context, R.string.message_undertaked);
+                    item.status = SupportContentManager.STATUS_SUPPORTING;
                     mListener.doSupport();
                 }
                 dismiss();

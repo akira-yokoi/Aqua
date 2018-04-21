@@ -1,6 +1,9 @@
 package org.amd.aqua;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -12,29 +15,16 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.internal.bind.DateTypeAdapter;
-
-import org.amd.aqua.rest.WeatherApi;
-import org.amd.aqua.rest.WeatherResponse;
 import org.amd.aqua.util.ViewUtil;
 
-import java.util.Date;
-
-import retrofit.RestAdapter;
-import retrofit.android.AndroidLog;
-import retrofit.converter.GsonConverter;
-import rx.Observer;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 import static org.amd.aqua.R.id.navigation;
 
@@ -49,7 +39,8 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         // Floatingボタン
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);fab.setBackgroundColor( getResources().getColor( R.color.colorPrimary));
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,43 +77,55 @@ public class MainActivity extends AppCompatActivity
     public void callRest(View view) {
         ViewUtil.showShortToast(this, "callRest");
 
-        // JSONのパーサー
-        Gson gson = new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-                .registerTypeAdapter(Date.class, new DateTypeAdapter())
-                .create();
+        try {
+            AsyncHttpRequest request = new AsyncHttpRequest(this);
+            request.execute();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
-        // RestAdapterの生成
-        RestAdapter adapter = new RestAdapter.Builder()
-                .setEndpoint("http://api.openweathermap.org")
-                .setConverter(new GsonConverter(gson))
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setLog(new AndroidLog("=NETWORK="))
-                .build();
+    public class AsyncHttpRequest extends AsyncTask<Uri.Builder, Void, String> {
 
-        // 非同期処理の実行
-        adapter.create(WeatherApi.class).get("weather", "Tokyo,jp")
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<WeatherResponse>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.d("MainActivity", "onCompleted()");
-                    }
+        private Activity mainActivity;
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.e("MainActivity", "Error : " + e.toString());
-                    }
+        public AsyncHttpRequest(Activity activity) {
 
-                    @Override
-                    public void onNext(WeatherResponse response) {
-                        Log.d("MainActivity", "onNext()");
-                        if (response != null) {
-                            ((TextView) findViewById(R.id.text)).setText(response.weather.get(0).main);
-                        }
-                    }
-                });
+            // 呼び出し元のアクティビティ
+            this.mainActivity = activity;
+        }
+
+        // このメソッドは必ずオーバーライドする必要があるよ
+        // ここが非同期で処理される部分みたいたぶん。
+        @Override
+        protected String doInBackground(Uri.Builder... builder) {
+            Request request = new Request.Builder()
+//                    .url("http://www.asahi.com")
+                    .url("http://hackathon.support-cloud-projects.com/LaundromatWebApi/api/memberinfo?ANKOWNERID=46228846")
+                    .addHeader("Authorization", "Bearer Ad6xhPJRT4ZZwuQBIDGLsgnL8tI3ivPIQdp3Dfj_R3BFyppz8D9dUTDXScKTFLR0Bvt8hRPTSOtflPMowamQEgb1JjM14XhlJJnyIpTOqpsbP7-IjjYrutsGXnnoAA7ry_W95-Ior06hGKG1d2pvrpQrkU-1MVloxC5zXlHNEI_oyytddCZ3GUOw1eOwJnWi2tP_fi0JkQ7yfC0o9t9Xh5YXAlNnVvmeX1mbFJmOnw-D2sYM0TQz2lBR8rnrUOhYNcHlEgkA2kMYBg87MzRhCCvNtHKHP2j20j2gZJWAA9pdIYmmEmULe9oF1Y5zZHiHY_6O_hPjhM_xiWKoxCQu990ZuW0Il4SMsmxPlIRMhkiAhn3kdUELKdmHx2cY3a52Aftv4BGI6omzI9RBoJiQ9SPpEApRTFw5xnKiSINwVQfPVHUZItr2YZ4Ckg3p1dJpq_Au8Uq4P_9lUpfF6atTFFUlrKQuWHGpWMflefSoroxkHGYSgkY4ptBqzPBnEvA4")
+                    .get()
+                    .build();
+
+            OkHttpClient client = new OkHttpClient();
+
+            try {
+                Response response = client.newCall(request).execute();
+                ResponseBody body = response.body();
+                String strBody = body.string();
+                System.err.println( strBody);
+                return strBody;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            return null;
+        }
+
+
+        // このメソッドは非同期処理の終わった後に呼び出されます
+        @Override
+        protected void onPostExecute(String result) {
+            System.err.println();
+        }
     }
 
     @Override
@@ -187,8 +190,8 @@ public class MainActivity extends AppCompatActivity
                     return true;
                 case R.id.navigation_list:
                     ViewUtil.showShortToast(MainActivity.this, "Dashboard");
-                    Intent mapsIntent = new Intent( MainActivity.this, MapsActivity.class);
-                    startActivity( mapsIntent);
+                    Intent mapsIntent = new Intent(MainActivity.this, MapsActivity.class);
+                    startActivity(mapsIntent);
                     return true;
                 case R.id.navigation_notifications:
                     ViewUtil.showShortToast(MainActivity.this, "Notifications");

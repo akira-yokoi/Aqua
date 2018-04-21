@@ -6,6 +6,7 @@ import org.amd.aqua.util.DateTimeUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Helper class for providing sample content for user interfaces created by
@@ -26,8 +27,7 @@ public class SupportContentManager {
 
     private static SupportContentManager instance = null;
 
-    private static final int COUNT = 25;
-
+    private static final int COUNT = 9;
 
 
     private List<SupportItem> items = new ArrayList<SupportItem>();
@@ -73,8 +73,11 @@ public class SupportContentManager {
         if (position > 10) {
             item.taskId = 2000 + (position - 10) * 10;
         }
-        item.requestantId = 0;
-        item.supporterId = 0;
+
+        Random random = new Random();
+        int randomInt = random.nextInt(3);
+        item.requestantId = randomInt;
+        item.supporterId = randomInt + 1;
 
         if (position % 3 == 0) {
             item.status = STATUS_LOOKING;

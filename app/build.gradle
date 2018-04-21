@@ -40,4 +40,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:26.+'
     compile 'com.google.android.gms:play-services-plus:10.2.1'
     compile 'com.android.support:support-vector-drawable:26.+'
+    compile 'com.squareup.okhttp3:okhttp:3.0.1'
 }

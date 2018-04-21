@@ -63,17 +63,19 @@
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/machineLayout"
                 android:shrinkColumns="1"
                 android:stretchColumns="1">
 
                 <TableRow
+                    android:id="@+id/pictureLayout"
                     android:layout_marginTop="10dp">
 
                     <android.support.v7.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="@string/text_machine"
+                        android:text="@string/message_select_picture"
                         android:textColor="@color/colorPrimary"/>
 
                     <LinearLayout
@@ -81,49 +83,13 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="left|center_vertical"
                         android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <android.support.v7.widget.AppCompatImageButton
-                            android:id="@+id/machineImageButton"
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
-                            android:background="@drawable/button_image"
-                            android:gravity="center"
-                            app:srcCompat="@drawable/flat_washing_machine"/>
-                    </LinearLayout>
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_marginTop="10dp">
-
-                    <android.support.v7.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="@string/text_picture"
-                        android:textColor="@color/colorPrimary"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left|center_vertical"
-                        android:gravity="center"
+                        android:paddingRight="5dip"
                         android:orientation="horizontal">
 
                         <android.support.v7.widget.AppCompatImageButton
                             android:id="@+id/image1Button"
                             android:layout_width="75dp"
                             android:layout_height="75dp"
-                            android:background="@drawable/button_image"
-                            android:gravity="center"
-                            app:srcCompat="@drawable/ic_image_black_24dp"/>
-
-                        <android.support.v7.widget.AppCompatImageButton
-                            android:id="@+id/image2Button"
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
-                            android:layout_marginLeft="10dip"
                             android:background="@drawable/button_image"
                             android:gravity="center"
                             app:srcCompat="@drawable/ic_image_black_24dp"/>

@@ -11,4 +11,11 @@ public class StringUtil {
         }
         return false;
     }
+
+    public static final boolean equals( String text1, String text2){
+        if( text1 == null || text2 == null){
+            return false;
+        }
+        return text1.equals( text2);
+    }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">サポーターズ</string>
+    <string name="app_name">AQULA</string>
 
     <!--
         サポーターズ、サポーター、サポッチャ
@@ -10,8 +10,8 @@
     <string name="title_home">ホーム</string>
     <string name="title_list">リスト</string>
     <string name="title_mylist">マイリスト</string>
-    <string name="title_new_support">サポート依頼</string>
-    <string name="title_finish_support">サポート完了</string>
+    <string name="title_new_support">ちょいリクする</string>
+    <string name="title_finish_support">ちょいリク完了</string>
     <string name="title_edit_support">サポート編集</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
@@ -19,8 +19,10 @@
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
-    <string name="login_explain">Aqua会員情報に登録しているメールアドレスでログインしてください</string>
-    <string name="prompt_email">メール</string>
+    <string name="login_explain">Aqua会員IDと誕生日を入力してログインしてください</string>
+    <string name="login_failed">ログインに失敗ました。\nAqua会員IDと誕生日を確認してください。</string>
+    <string name="prompt_member_id">Aqua会員ID</string>
+    <string name="prompt_birthday">誕生日</string>
     <string name="prompt_password">パスワード (optional)</string>
     <string name="action_sign_in">ログイン</string>
     <string name="action_sign_in_short">Sign in</string>
@@ -32,23 +34,28 @@
         completions."
     </string>
 
+    <string name="text_status_running">%1$s 残り%2$s</string>
+    <string name="text_status_stop">%1$s</string>
+
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="close">閉じる</string>
-    <string name="do_support_short">サポート\nする</string>
+    <string name="do_support_short">引き受ける</string>
+
+    <string name="text_lank_gold">ゴールド</string>
 
     <!-- Strings related to home -->
     <string name="home">ホーム</string>
-    <string name="do_support">サポートをする</string>
+    <string name="do_support">引き受ける</string>
     <string name="request_support">サポートを受ける</string>
 
-    <string name="title_point">サポートポイント</string>
-    <string name="title_lank">サポートランキング</string>
+    <string name="title_point">ポイント</string>
+    <string name="title_lank">ランク</string>
 
     <!-- Strings related to list -->
     <string name="menu_all">全て</string>
-    <string name="menu_support">サポートを担当</string>
-    <string name="menu_request">サポートを依頼</string>
+    <string name="menu_support">ちょいウケ</string>
+    <string name="menu_request">ちょいリク</string>
 
     <!-- Strings related to support_detail -->
     <string name="title_content">内容</string>
@@ -60,19 +67,19 @@
     <string name="title_period">依頼期間</string>
     <string name="title_status">ステータス</string>
 
-    <string name="title_looking">募集中</string>
-    <string name="title_supporting">進行中</string>
+    <string name="title_looking">ちょいリク中</string>
+    <string name="title_supporting">ちょいウケ中</string>
     <string name="title_complete">完了</string>
 
     <string name="text_all">全て</string>
-    <string name="text_looking">募集中</string>
-    <string name="text_supporting">進行中</string>
+    <string name="text_looking">ちょいリク中</string>
+    <string name="text_supporting">ちょいウケ中</string>
     <string name="text_complete">完了</string>
 
     <string name="task_group_washing">洗濯</string>
     <string name="task_group_clean">掃除</string>
 
-    <string name="text_point">%1$dポイント</string>
+    <string name="text_point">%1$d pt</string>
     <string name="text_man">男性</string>
     <string name="text_woman">女性</string>
 
@@ -90,13 +97,17 @@
     <string name="text_choose">選択</string>
     <string name="text_chose_machine">機器を選択</string>
 
-    <string name="message_requested">サポートを依頼しました</string>
-    <string name="message_finished">サポートを完了しました</string>
-    <string name="message_undertaked">サポートを引き受けました</string>
+    <string name="message_requested">ちょいリクを依頼しました</string>
+    <string name="message_finished">ちょいリクを完了しました</string>
+    <string name="message_undertaked">ちょいリクを引き受けました</string>
+    <string name="message_you_got_request">あなたにちょいリクが来ています</string>
+    <string name="text_show_request">みてみる</string>
+    <string name="message_select_machine">利用した\n機器を選択</string>
+    <string name="message_select_picture">完了時の\n写真を選択</string>
 
     <string-array name="status_map">
-        <item>1:募集中</item>
-        <item>2:実行中</item>
+        <item>1:ちょいリク中</item>
+        <item>2:ちょいウケ中</item>
         <item>3:完了済</item>
     </string-array>
 
@@ -106,7 +117,7 @@
     </string-array>
 
     <string-array name="c2c_support_task_map">
-        <!-- TaskGroupId,TaskId,TaskName,TaskIconGroup -->
+        <!-- TaskGroupId,TaskId,TaskName,Point,TaskIconGroup -->
         <item>100:1000:洗濯物をコインランドリーへ運ぶ:150:30</item>
         <item>100:1010:洗濯機で洗濯する:100:10</item>
         <item>100:1020:乾燥機で乾燥する:100:10</item>
@@ -117,13 +128,13 @@
     </string-array>
 
     <string-array name="b2c_support_task_map">
-        <!-- TaskGroupId,TaskId,TaskName,TaskIconGroup -->
-        <item>200:2000:店舗の洗濯（床）:-1:40</item>
-        <item>200:2010:店舗の洗濯（椅子）:-1:40</item>
-        <item>200:2020:店舗の洗濯（ランドリーカート）:-1:40</item>
-        <item>200:2030:店舗の洗濯（忘れ物入れ）:-1:40</item>
-        <item>200:2040:店舗の洗濯（窓ガラス・自動ドア）:-1:40</item>
-        <item>200:2050:店舗の洗濯（棚）:-1:40</item>
+        <!-- TaskGroupId,TaskId,TaskName,Point,TaskIconGroup -->
+        <item>200:2000:店舗の洗濯（床）:300:40</item>
+        <item>200:2010:店舗の洗濯（椅子）:200:40</item>
+        <item>200:2020:店舗の洗濯（ランドリーカート）:100:40</item>
+        <item>200:2030:店舗の洗濯（忘れ物入れ）:100:40</item>
+        <item>200:2040:店舗の洗濯（窓ガラス・自動ドア）:100:40</item>
+        <item>200:2050:店舗の洗濯（棚）:100:40</item>
     </string-array>
     <string name="title_activity_settings">Settings</string>
 

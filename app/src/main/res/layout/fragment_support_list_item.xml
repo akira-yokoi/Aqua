@@ -44,9 +44,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_margin"
-                    android:gravity="center"
-                    android:paddingLeft="5dip"
-                    android:paddingRight="5dip"/>
+                    android:gravity="center_vertical|left"
+                    android:minWidth="75dp"/>
 
             </TableRow>
 
@@ -63,7 +62,9 @@
                     android:id="@+id/requestant"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/text_margin"/>
+                    android:layout_margin="@dimen/text_margin"
+                    android:gravity="center_vertical|left"
+                    android:minWidth="75dp"/>
 
             </TableRow>
 
@@ -81,6 +82,14 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/text_margin"
                         android:layout_weight="1"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/pointText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/text_margin"
+                        android:gravity="center_vertical|left"
+                        android:minWidth="75dp"/>
                 </LinearLayout>
             </TableRow>
         </TableLayout>

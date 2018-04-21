@@ -12,6 +12,7 @@ import android.widget.TextView;
 import org.amd.aqua.R;
 import org.amd.aqua.model.SupportItem;
 import org.amd.aqua.model.Task;
+import org.amd.aqua.model.UserManager;
 import org.amd.aqua.util.DateTimeUtil;
 import org.amd.aqua.util.ResourceUtil;
 import org.amd.aqua.util.TaskManager;
@@ -74,7 +75,9 @@ public class SupportListFragmentViewAdapter extends RecyclerView.Adapter<Support
         ViewUtil.setStatusColor(holder.mStatusView, status);
 
         holder.mMessageView.setText(item.message);
-        holder.mRequestantView.setText(String.valueOf(item.requestantId));
+        holder.mRequestantView.setText( UserManager.getInstance().getUserName(item.requestantId));
+        holder.mPointView.setText( context.getString( R.string.text_point, task.point));
+
         holder.mRequestDateView.setText(DateTimeUtil.getMDHm(item.startDate) + "～" + DateTimeUtil.getMDHm(item.limitDate));
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +102,7 @@ public class SupportListFragmentViewAdapter extends RecyclerView.Adapter<Support
         public final ImageView mImagetView;
         public final TextView mContentView;
         public final TextView mStatusView;
+        public final TextView mPointView;
         public final TextView mMessageView;
         public final TextView mRequestantView;
         public final TextView mRequestDateView;
@@ -112,6 +116,7 @@ public class SupportListFragmentViewAdapter extends RecyclerView.Adapter<Support
             mStatusView = (TextView) view.findViewById(R.id.status);
             mContentView = (TextView) view.findViewById(R.id.content);
             mMessageView = (TextView) view.findViewById(R.id.message);
+            mPointView = (TextView) view.findViewById(R.id.pointText);
             mRequestantView = (TextView) view.findViewById(R.id.requestant);
             mRequestDateView = (TextView) view.findViewById(R.id.requestDate);
         }

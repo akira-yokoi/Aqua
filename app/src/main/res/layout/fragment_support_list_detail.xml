@@ -105,6 +105,26 @@
             </TableRow>
 
             <TableRow
+                android:id="@+id/pointRow"
+                android:paddingTop="5dip">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/title_point"
+                    android:textColor="@color/colorBlack"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/pointText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorBlack"/>
+            </TableRow>
+
+            <TableRow
                 android:id="@+id/statusRow"
                 android:paddingTop="5dip">
 
